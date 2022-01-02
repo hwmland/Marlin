@@ -1628,3 +1628,10 @@ void loop() {
 
   } while (ENABLED(__AVR__)); // Loop forever on slower (AVR) boards
 }
+
+/* definition to expand macro then apply to pragma message */
+#define VALUE_TO_STRING(x) #x
+#define VALUE(x) VALUE_TO_STRING(x)
+#define VAR_NAME_VALUE(var) #var "="  VALUE(var)
+#pragma message(VAR_NAME_VALUE(FAN1_PIN))
+#pragma message(VAR_NAME_VALUE(HEATER_BED_PIN))
